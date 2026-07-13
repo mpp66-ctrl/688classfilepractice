@@ -13,7 +13,13 @@
     section { max-width: 800px; margin: 40px auto; padding: 0 20px; }
     h2 { font-size: 1.5rem; margin-bottom: 15px; border-bottom: 2px solid #1a1a2e; padding-bottom: 5px; }
     .card { background: white; border-radius: 8px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    .card h3 { font-size: 1.1rem; margin-bottom: 8px; color: #1a1a2e; }
+    .card p { font-size: 0.95rem; line-height: 1.6; margin-bottom: 8px; }
+    .tag { display: inline-block; background: #e8e8f0; color: #1a1a2e; padding: 3px 10px; border-radius: 20px; margin: 3px; font-size: 0.8rem; }
+    .tag.ai { background: #1a1a2e; color: white; }
     .skills span { display: inline-block; background: #1a1a2e; color: white; padding: 5px 12px; border-radius: 20px; margin: 5px; font-size: 0.9rem; }
+    .exp-role { font-weight: bold; color: #1a1a2e; }
+    .exp-date { font-size: 0.85rem; color: #888; margin-bottom: 6px; }
     footer { text-align: center; padding: 20px; background: #1a1a2e; color: #aaa; margin-top: 60px; }
     a { color: #1a1a2e; }
   </style>
@@ -34,19 +40,69 @@
   </section>
 
   <section>
+    <h2>Experience</h2>
+    <div class="card">
+      <p class="exp-role">Founder & CEO — AiviaLabs</p>
+      <p class="exp-date">2022 – Present</p>
+      <p>Built and operate an AI automation agency delivering chatbots, CRM integrations, and workflow automation for SMBs. Manage client acquisition, solution architecture, and delivery.</p>
+    </div>
+    <div class="card">
+      <p class="exp-role">Business Development Manager — TerraSecure</p>
+      <p class="exp-date">2024 – Present</p>
+      <p>Drive business development for a full-stack technology company specializing in cybersecurity, managed IT, AI automation, and compliance services targeting healthcare and enterprise sectors.</p>
+    </div>
+  </section>
+
+  <section>
     <h2>Projects</h2>
+
+    <div class="card">
+      <h3>Multi-Tenant Ticketing System with AI Email Intelligence</h3>
+      <p>Enterprise customer support platform with AI-powered email classification, automatic ticket routing, and Gmail API integration. Supports multi-organization architecture with role-based access control.</p>
+      <span class="tag ai">Claude API</span>
+      <span class="tag">Next.js 14</span>
+      <span class="tag">TypeScript</span>
+      <span class="tag">PostgreSQL</span>
+      <span class="tag">Gmail API</span>
+    </div>
+
+    <div class="card">
+      <h3>Census Data Intelligence & Spatial Analytics Platform</h3>
+      <p>Geospatial analytics platform using RAG for intelligent demographic querying, clustering for neighborhood segmentation, and interactive heatmap visualizations.</p>
+      <span class="tag ai">LangChain</span>
+      <span class="tag ai">OpenAI</span>
+      <span class="tag">Python</span>
+      <span class="tag">PostGIS</span>
+      <span class="tag">Folium</span>
+    </div>
+
+    <div class="card">
+      <h3>AI HR Recruitment Portal</h3>
+      <p>Automated recruitment platform with AI resume screening, candidate pipeline management, call scheduling integration, and multi-stage interview tracking.</p>
+      <span class="tag ai">AI Resume Parsing</span>
+      <span class="tag">React</span>
+      <span class="tag">Supabase</span>
+      <span class="tag">TypeScript</span>
+    </div>
+
+    <div class="card">
+      <h3>Educational Platform with AI Content Generation</h3>
+      <p>Full-stack education platform that scrapes content from educational sources, auto-generates slides and quizzes using Gemini API, with student/teacher role management.</p>
+      <span class="tag ai">Gemini API</span>
+      <span class="tag">Next.js 14</span>
+      <span class="tag">Python</span>
+      <span class="tag">PostgreSQL</span>
+      <span class="tag">Selenium</span>
+    </div>
+
     <div class="card">
       <h3>AD688 Data Analytics Portfolio</h3>
       <p>Multi-tab analytics project built with Quarto and Python. Includes sentiment analysis, Pearson correlation, and KMeans clustering.</p>
+      <span class="tag">Python</span>
+      <span class="tag">Quarto</span>
+      <span class="tag">KMeans</span>
     </div>
-    <div class="card">
-      <h3>AiviaLabs – AI Automation Agency</h3>
-      <p>Founded and operate an AI agency delivering chatbots, CRM integrations, and workflow automation for SMBs.</p>
-    </div>
-    <div class="card">
-      <h3>Jobprabai.com</h3>
-      <p>Career and resume-focused platform with SEO-optimized content for job seekers.</p>
-    </div>
+
   </section>
 
   <section>
@@ -55,11 +111,14 @@
       <span>Python</span>
       <span>SQL</span>
       <span>Machine Learning</span>
-      <span>Data Pipelines</span>
+      <span>Next.js</span>
+      <span>TypeScript</span>
       <span>AWS</span>
+      <span>Azure</span>
       <span>n8n</span>
       <span>AI Agents</span>
-      <span>Quarto</span>
+      <span>LangChain</span>
+      <span>PostgreSQL</span>
       <span>GitHub Pages</span>
     </div>
   </section>
