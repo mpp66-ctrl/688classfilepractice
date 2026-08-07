@@ -1,140 +1,360 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My Portfolio</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: Arial, sans-serif; background: #f4f4f4; color: #333; }
-    header { background: #1a1a2e; color: white; padding: 40px 20px; text-align: center; }
-    header h1 { font-size: 2.5rem; }
-    header p { margin-top: 10px; font-size: 1.1rem; color: #aaa; }
-    section { max-width: 800px; margin: 40px auto; padding: 0 20px; }
-    h2 { font-size: 1.5rem; margin-bottom: 15px; border-bottom: 2px solid #1a1a2e; padding-bottom: 5px; }
-    .card { background: white; border-radius: 8px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
-    .card h3 { font-size: 1.1rem; margin-bottom: 8px; color: #1a1a2e; }
-    .card p { font-size: 0.95rem; line-height: 1.6; margin-bottom: 8px; }
-    .tag { display: inline-block; background: #e8e8f0; color: #1a1a2e; padding: 3px 10px; border-radius: 20px; margin: 3px; font-size: 0.8rem; }
-    .tag.ai { background: #1a1a2e; color: white; }
-    .skills span { display: inline-block; background: #1a1a2e; color: white; padding: 5px 12px; border-radius: 20px; margin: 5px; font-size: 0.9rem; }
-    .exp-role { font-weight: bold; color: #1a1a2e; }
-    .exp-date { font-size: 0.85rem; color: #888; margin-bottom: 6px; }
-    footer { text-align: center; padding: 20px; background: #1a1a2e; color: #aaa; margin-top: 60px; }
-    a { color: #1a1a2e; }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AiviaLabs — AI Automation for Growing Businesses</title>
+<meta name="description" content="AiviaLabs builds AI agents, chatbots, and workflow automation that run your business operations without adding headcount." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E1116;
+    --panel:#151922;
+    --panel-2:#1B2029;
+    --line:#262C38;
+    --text:#E7E9EE;
+    --muted:#8B92A5;
+    --mint:#5EEAD4;
+    --mint-dim:#2E5F58;
+    --amber:#F5A65B;
+    --radius:14px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Space Grotesk',sans-serif;letter-spacing:-0.02em;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  a{color:inherit;}
+  :focus-visible{outline:2px solid var(--mint);outline-offset:3px;border-radius:4px;}
+  @media (prefers-reduced-motion:reduce){
+    *{animation-duration:0.001ms !important;animation-iteration-count:1 !important;transition-duration:0.001ms !important;scroll-behavior:auto !important;}
+  }
+
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(14,17,22,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:1.05rem;text-decoration:none;}
+  .brand-mark{width:22px;height:22px;position:relative;flex-shrink:0;}
+  .brand-mark span{position:absolute;width:6px;height:6px;border-radius:50%;background:var(--mint);}
+  .brand-mark span:nth-child(1){top:0;left:8px;}
+  .brand-mark span:nth-child(2){bottom:0;left:0;background:var(--amber);}
+  .brand-mark span:nth-child(3){bottom:0;right:0;}
+  .navlinks{display:flex;gap:28px;font-size:0.9rem;color:var(--muted);}
+  .navlinks a{text-decoration:none;transition:color .15s;}
+  .navlinks a:hover{color:var(--text);}
+  .nav-cta{
+    background:var(--mint);color:#08201C;font-weight:600;font-size:0.85rem;
+    padding:9px 18px;border-radius:999px;text-decoration:none;white-space:nowrap;
+  }
+  @media(max-width:760px){.navlinks{display:none;}}
+
+  /* HERO */
+  .hero{padding:88px 0 60px;position:relative;overflow:hidden;}
+  .hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;}
+  @media(max-width:900px){.hero-grid{grid-template-columns:1fr;}}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'IBM Plex Mono',monospace;font-size:0.78rem;color:var(--mint);
+    border:1px solid var(--mint-dim);background:rgba(94,234,212,0.06);
+    padding:6px 12px;border-radius:999px;margin-bottom:22px;
+  }
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--mint);animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+  .hero h1{font-size:clamp(2.2rem,4.4vw,3.4rem);font-weight:700;line-height:1.08;margin-bottom:22px;}
+  .hero h1 em{font-style:normal;color:var(--mint);}
+  .hero p.lead{font-size:1.08rem;color:var(--muted);max-width:46ch;margin-bottom:32px;}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--mint);color:#08201C;font-weight:600;padding:14px 26px;
+    border-radius:999px;text-decoration:none;font-size:0.95rem;
+    transition:transform .15s ease;display:inline-block;
+  }
+  .btn-primary:hover{transform:translateY(-2px);}
+  .btn-ghost{
+    border:1px solid var(--line);color:var(--text);font-weight:500;padding:14px 26px;
+    border-radius:999px;text-decoration:none;font-size:0.95rem;transition:border-color .15s;
+  }
+  .btn-ghost:hover{border-color:var(--muted);}
+
+  /* WORKFLOW SIGNATURE DIAGRAM */
+  .flow{
+    background:var(--panel);border:1px solid var(--line);border-radius:20px;
+    padding:28px 22px;position:relative;
+  }
+  .flow-label{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:var(--muted);margin-bottom:18px;display:flex;justify-content:space-between;}
+  .flow-label .live{color:var(--mint);}
+  svg.flow-canvas{width:100%;height:auto;display:block;}
+  .node-box{fill:var(--panel-2);stroke:var(--line);stroke-width:1.5;}
+  .node-box.active{stroke:var(--mint);}
+  .node-label{font-family:'IBM Plex Mono',monospace;font-size:11px;fill:var(--text);}
+  .node-sub{font-family:'IBM Plex Mono',monospace;font-size:9px;fill:var(--muted);}
+  .edge{stroke:var(--line);stroke-width:1.5;fill:none;}
+  .pulse-dot{fill:var(--mint);filter:drop-shadow(0 0 5px var(--mint));}
+
+  /* SECTION shared */
+  section{padding:76px 0;}
+  .section-head{max-width:640px;margin-bottom:48px;}
+  .section-tag{font-family:'IBM Plex Mono',monospace;font-size:0.78rem;color:var(--amber);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px;display:block;}
+  .section-head h2{font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:14px;}
+  .section-head p{color:var(--muted);font-size:1rem;}
+
+  /* PROBLEM STRIP */
+  .problems{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--panel);}
+  .problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;}
+  .problem-grid > div{padding:34px 28px;border-right:1px solid var(--line);}
+  .problem-grid > div:last-child{border-right:none;}
+  @media(max-width:760px){.problem-grid{grid-template-columns:1fr;}.problem-grid>div{border-right:none;border-bottom:1px solid var(--line);}}
+  .problem-grid .stat{font-family:'Space Grotesk',sans-serif;font-size:1.9rem;font-weight:700;color:var(--mint);margin-bottom:6px;}
+  .problem-grid p{color:var(--muted);font-size:0.92rem;}
+
+  /* SERVICES */
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  @media(max-width:900px){.services-grid{grid-template-columns:1fr;}}
+  .svc-card{
+    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px;transition:border-color .2s,transform .2s;
+  }
+  .svc-card:hover{border-color:var(--mint-dim);transform:translateY(-3px);}
+  .svc-icon{
+    width:38px;height:38px;border-radius:10px;background:var(--panel-2);
+    display:flex;align-items:center;justify-content:center;margin-bottom:18px;
+  }
+  .svc-card h3{font-size:1.1rem;margin-bottom:10px;}
+  .svc-card p{color:var(--muted);font-size:0.9rem;margin-bottom:16px;}
+  .stack-tags{display:flex;flex-wrap:wrap;gap:6px;}
+  .stack-tags span{
+    font-family:'IBM Plex Mono',monospace;font-size:0.7rem;color:var(--muted);
+    border:1px solid var(--line);padding:3px 8px;border-radius:6px;
+  }
+
+  /* PROCESS */
+  .process{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .process-list{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;}
+  @media(max-width:900px){.process-list{grid-template-columns:1fr;}}
+  .process-step{padding:8px 22px 8px 0;position:relative;}
+  .process-step .num{font-family:'IBM Plex Mono',monospace;color:var(--mint);font-size:0.85rem;margin-bottom:10px;display:block;}
+  .process-step h3{font-size:1rem;margin-bottom:8px;}
+  .process-step p{color:var(--muted);font-size:0.86rem;}
+  .process-list::before{
+    content:"";position:absolute;top:14px;left:0;right:0;height:1px;background:var(--line);
+    display:none;
+  }
+  @media(min-width:901px){.process-list::before{display:block;}}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:56px;align-items:start;}
+  @media(max-width:900px){.about-grid{grid-template-columns:1fr;}}
+  .about-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:28px;}
+  .about-card .name{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.2rem;margin-bottom:4px;}
+  .about-card .role{color:var(--amber);font-size:0.88rem;margin-bottom:18px;font-family:'IBM Plex Mono',monospace;}
+  .about-card p{color:var(--muted);font-size:0.92rem;}
+  .about-copy h2{font-size:clamp(1.5rem,2.8vw,2rem);margin-bottom:18px;}
+  .about-copy p{color:var(--muted);margin-bottom:16px;}
+  .about-copy p strong{color:var(--text);font-weight:600;}
+
+  /* CTA */
+  .cta{
+    background:linear-gradient(160deg,var(--panel) 0%, var(--panel-2) 100%);
+    border:1px solid var(--line);border-radius:24px;padding:56px 40px;text-align:center;
+  }
+  .cta h2{font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:14px;}
+  .cta p{color:var(--muted);margin-bottom:28px;}
+
+  footer{border-top:1px solid var(--line);padding:36px 0;}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  footer .fbrand{font-family:'Space Grotesk',sans-serif;font-weight:600;}
+  footer .flinks{display:flex;gap:22px;font-size:0.88rem;color:var(--muted);}
+  footer .flinks a{text-decoration:none;}
+  footer .flinks a:hover{color:var(--text);}
+  footer .copyright{color:var(--muted);font-size:0.8rem;font-family:'IBM Plex Mono',monospace;}
+</style>
 </head>
 <body>
 
-  <header>
-    <h1>Manan Patel</h1>
-    <p>MS Business Analytics | Boston University</p>
-    <p>AI Automation | Data Analytics | Cloud</p>
-  </header>
-
-  <section>
-    <h2>About Me</h2>
-    <div class="card">
-      <p>Graduate student at Boston University pursuing a Master's in Business Analytics. Founder of AiviaLabs, an AI automation agency helping small and medium businesses with chatbots, AI agents, and workflow automation.</p>
+<nav>
+  <div class="wrap">
+    <a href="#top" class="brand">
+      <span class="brand-mark"><span></span><span></span><span></span></span>
+      AiviaLabs
+    </a>
+    <div class="navlinks">
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#about">About</a>
     </div>
-  </section>
+    <a href="mailto:hello@aivialabs.ai" class="nav-cta">Book a call</a>
+  </div>
+</nav>
 
-  <section>
-    <h2>Experience</h2>
-    <div class="card">
-      <p class="exp-role">Founder & CEO — AiviaLabs</p>
-      <p class="exp-date">2022 – Present</p>
-      <p>Built and operate an AI automation agency delivering chatbots, CRM integrations, and workflow automation for SMBs. Manage client acquisition, solution architecture, and delivery.</p>
-    </div>
-    <div class="card">
-      <p class="exp-role">Business Development Manager — TerraSecure</p>
-      <p class="exp-date">2024 – Present</p>
-      <p>Drive business development for a full-stack technology company specializing in cybersecurity, managed IT, AI automation, and compliance services targeting healthcare and enterprise sectors.</p>
-    </div>
-  </section>
-
-  <section>
-    <h2>Projects</h2>
-
-    <div class="card">
-      <h3>Multi-Tenant Ticketing System with AI Email Intelligence</h3>
-      <p>Enterprise customer support platform with AI-powered email classification, automatic ticket routing, and Gmail API integration. Supports multi-organization architecture with role-based access control.</p>
-      <span class="tag ai">Claude API</span>
-      <span class="tag">Next.js 14</span>
-      <span class="tag">TypeScript</span>
-      <span class="tag">PostgreSQL</span>
-      <span class="tag">Gmail API</span>
+<div id="top"></div>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow"><span class="dot"></span>AI AUTOMATION FOR SMBs</span>
+      <h1>Your business keeps working <em>after everyone logs off.</em></h1>
+      <p class="lead">AiviaLabs builds AI agents, chatbots, and workflow automation that pick up the tasks your team doesn't have time for — lead follow-up, scheduling, data entry — so nothing sits waiting for Monday.</p>
+      <div class="hero-ctas">
+        <a href="mailto:hello@aivialabs.ai" class="btn-primary">Book a free automation audit</a>
+        <a href="#services" class="btn-ghost">See what we build</a>
+      </div>
     </div>
 
-    <div class="card">
-      <h3>Census Data Intelligence & Spatial Analytics Platform</h3>
-      <p>Geospatial analytics platform using RAG for intelligent demographic querying, clustering for neighborhood segmentation, and interactive heatmap visualizations.</p>
-      <span class="tag ai">LangChain</span>
-      <span class="tag ai">OpenAI</span>
-      <span class="tag">Python</span>
-      <span class="tag">PostGIS</span>
-      <span class="tag">Folium</span>
+    <div class="flow">
+      <div class="flow-label"><span>PIPELINE — LEAD_TO_MEETING</span><span class="live">● LIVE</span></div>
+      <svg class="flow-canvas" viewBox="0 0 380 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram showing a new lead automatically qualified, booked, and synced to a CRM">
+        <path class="edge" d="M70,40 L70,90" />
+        <path class="edge" d="M70,90 L70,140" />
+        <path class="edge" d="M70,140 L70,190" />
+        <path class="edge" d="M70,190 Q70,220 100,220 L280,220" />
+
+        <rect class="node-box active" x="10" y="10" width="120" height="34" rx="8"/>
+        <text class="node-label" x="22" y="27">New Lead</text>
+        <text class="node-sub" x="22" y="38">form.submit()</text>
+
+        <rect class="node-box" x="10" y="70" width="120" height="34" rx="8"/>
+        <text class="node-label" x="22" y="87">AI Qualifies</text>
+        <text class="node-sub" x="22" y="98">intent + budget</text>
+
+        <rect class="node-box" x="10" y="120" width="120" height="34" rx="8"/>
+        <text class="node-label" x="22" y="137">Books Meeting</text>
+        <text class="node-sub" x="22" y="148">calendar sync</text>
+
+        <rect class="node-box" x="10" y="170" width="120" height="34" rx="8"/>
+        <text class="node-label" x="22" y="187">Notifies Rep</text>
+        <text class="node-sub" x="22" y="198">SMS + Slack</text>
+
+        <rect class="node-box" x="200" y="203" width="120" height="34" rx="8"/>
+        <text class="node-label" x="212" y="220">CRM Updated</text>
+        <text class="node-sub" x="212" y="231">no manual entry</text>
+
+        <circle class="pulse-dot" r="4">
+          <animateMotion dur="4.5s" repeatCount="indefinite"
+            path="M70,27 L70,90 L70,140 L70,190 Q70,220 100,220 L260,220" />
+        </circle>
+      </svg>
     </div>
+  </div>
+</section>
 
-    <div class="card">
-      <h3>AI HR Recruitment Portal</h3>
-      <p>Automated recruitment platform with AI resume screening, candidate pipeline management, call scheduling integration, and multi-stage interview tracking.</p>
-      <span class="tag ai">AI Resume Parsing</span>
-      <span class="tag">React</span>
-      <span class="tag">Supabase</span>
-      <span class="tag">TypeScript</span>
+<div class="problems">
+  <div class="wrap problem-grid">
+    <div>
+      <div class="stat">3–5 hrs</div>
+      <p>lost weekly to manual lead follow-up and data entry across most SMB sales teams.</p>
     </div>
-
-    <div class="card">
-      <h3>Educational Platform with AI Content Generation</h3>
-      <p>Full-stack education platform that scrapes content from educational sources, auto-generates slides and quizzes using Gemini API, with student/teacher role management.</p>
-      <span class="tag ai">Gemini API</span>
-      <span class="tag">Next.js 14</span>
-      <span class="tag">Python</span>
-      <span class="tag">PostgreSQL</span>
-      <span class="tag">Selenium</span>
+    <div>
+      <div class="stat">&lt; 5 min</div>
+      <p>is the response window that determines whether a lead converts or goes cold.</p>
     </div>
-
-    <div class="card">
-      <h3>AD688 Data Analytics Portfolio</h3>
-      <p>Multi-tab analytics project built with Quarto and Python. Includes sentiment analysis, Pearson correlation, and KMeans clustering.</p>
-      <span class="tag">Python</span>
-      <span class="tag">Quarto</span>
-      <span class="tag">KMeans</span>
+    <div>
+      <div class="stat">24 / 7</div>
+      <p>coverage without a 24/7 headcount — the agent doesn't clock out.</p>
     </div>
+  </div>
+</div>
 
-  </section>
-
-  <section>
-    <h2>Skills</h2>
-    <div class="card skills">
-      <span>Python</span>
-      <span>SQL</span>
-      <span>Machine Learning</span>
-      <span>Next.js</span>
-      <span>TypeScript</span>
-      <span>AWS</span>
-      <span>Azure</span>
-      <span>n8n</span>
-      <span>AI Agents</span>
-      <span>LangChain</span>
-      <span>PostgreSQL</span>
-      <span>GitHub Pages</span>
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-tag">What we build</span>
+      <h2>Automation that replaces the busywork, not the business.</h2>
+      <p>Every build is scoped to one workflow you already run today — we just stop it from needing a human in the loop for the repetitive parts.</p>
     </div>
-  </section>
-
-  <section>
-    <h2>Contact</h2>
-    <div class="card">
-      <p>Email: <a href="mailto:your@email.com">your@email.com</a></p>
-      <p>LinkedIn: <a href="#">linkedin.com/in/yourprofile</a></p>
-      <p>GitHub: <a href="https://github.com/mpp66-ctrl">github.com/mpp66-ctrl</a></p>
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5EEAD4" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </div>
+        <h3>AI Chatbots</h3>
+        <p>Trained on your FAQs, pricing, and policies — answers customers instantly on your site, SMS, or WhatsApp, and hands off to a human only when it should.</p>
+        <div class="stack-tags"><span>Dify</span><span>LangChain</span><span>GPT-4</span></div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5EEAD4" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </div>
+        <h3>AI Agents</h3>
+        <p>Autonomous workflows that qualify leads, triage support tickets, or screen resumes — reading context and taking the right next action without a script.</p>
+        <div class="stack-tags"><span>LangChain</span><span>Claude API</span><span>n8n</span></div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5EEAD4" stroke-width="1.8"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+        </div>
+        <h3>Workflow Automation</h3>
+        <p>Connects the tools you already use — CRM, calendar, inbox, spreadsheets — so data moves between them without anyone copy-pasting.</p>
+        <div class="stack-tags"><span>n8n</span><span>Make.com</span><span>GoHighLevel</span></div>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer>
-    <p>&copy; 2026 Manan Patel. All rights reserved.</p>
-  </footer>
+<div class="process" id="process">
+  <div class="wrap" style="padding:76px 0;">
+    <div class="section-head">
+      <span class="section-tag">How an engagement runs</span>
+      <h2>Four steps, one workflow at a time.</h2>
+    </div>
+    <div class="process-list">
+      <div class="process-step"><span class="num">01</span><h3>Discover</h3><p>We map the exact workflow that's eating your team's time — start to finish, no assumptions.</p></div>
+      <div class="process-step"><span class="num">02</span><h3>Design</h3><p>You see the automation blueprint before anything gets built — what triggers it, what it touches.</p></div>
+      <div class="process-step"><span class="num">03</span><h3>Deploy</h3><p>We ship it into your existing stack. No new dashboard to learn, no rip-and-replace.</p></div>
+      <div class="process-step"><span class="num">04</span><h3>Optimize</h3><p>We watch how it performs in the first weeks and tune it against real usage, not guesses.</p></div>
+    </div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-card">
+      <div class="name">Manan Patel</div>
+      <div class="role">Founder, AiviaLabs</div>
+      <p>MS in Business Analytics, Boston University. Builds automation the way an analyst thinks about it first — what's the actual bottleneck — before it's a chatbot or a workflow.</p>
+    </div>
+    <div class="about-copy">
+      <h2>Built by someone who scopes the problem before the tool.</h2>
+      <p>AiviaLabs started from a simple observation: most small businesses don't need more software, they need the software they already pay for to talk to each other. <strong>A CRM that doesn't hear from the website. A calendar nobody checks. A support inbox with a two-day lag.</strong></p>
+      <p>Every engagement starts by mapping that one workflow — not by pitching a platform. If a five-line Zapier-style automation solves it, that's what ships. If it needs an AI agent making judgment calls, that's what ships instead.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cta">
+      <h2>Tell us the workflow that's slowing you down.</h2>
+      <p>15-minute call. We'll tell you honestly whether automation is the right fix.</p>
+      <a href="mailto:hello@aivialabs.ai" class="btn-primary">Book a free automation audit</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fbrand">AiviaLabs</div>
+    <div class="flinks">
+      <a href="mailto:hello@aivialabs.ai">Email</a>
+      <a href="https://github.com/mpp66-ctrl" target="_blank" rel="noopener">GitHub</a>
+      <a href="#top">Back to top</a>
+    </div>
+    <div class="copyright">© 2026 AiviaLabs</div>
+  </div>
+</footer>
 
 </body>
 </html>
